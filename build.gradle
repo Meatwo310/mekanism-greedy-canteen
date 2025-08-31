@@ -111,6 +111,7 @@ dependencies {
 
     runtimeOnly fg.deobf("curse.maven:catalogue-459701:4766090")
     runtimeOnly fg.deobf("curse.maven:configured-457570:5180900")
+    runtimeOnly fg.deobf("curse.maven:appleskin-248787:4770828")
 }
 
 mixin {
