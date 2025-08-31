@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "io.github.meatwo310.examplemod.mixin",
+  "package": "io.github.meatwo310.greedycanteen.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "examplemod.refmap.json",
+  "refmap": "greedycanteen.refmap.json",
   "mixins": [
   ],
   "client": [
