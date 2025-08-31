@@ -7,6 +7,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class GreedyCanteen {
     public static final String MODID = "greedycanteen";
 
-    public GreedyCanteen(FMLJavaModLoadingContext context) {
+    public GreedyCanteen(FMLJavaModLoadingContext ctx) {
     }
 }
