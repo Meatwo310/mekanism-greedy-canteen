@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(value = ItemCanteen.class, remap = false)
+@Mixin(value = ItemCanteen.class)
 public abstract class ItemCanteenMixin {
     @Redirect(method = "finishUsingItem", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
     private int min(int foodNeeded, int min, @Local Player player) {
