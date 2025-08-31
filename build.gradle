@@ -95,12 +95,19 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+
+    // Mekanism Dependency
+    maven {
+        url 'https://modmaven.dev/'
+    }
 }
 
 dependencies {
     //noinspection VulnerableLibrariesLocal
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
 
     runtimeOnly fg.deobf("curse.maven:catalogue-459701:4766090")
     runtimeOnly fg.deobf("curse.maven:configured-457570:5180900")
@@ -118,6 +125,7 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
+            mekanism_version_range: mekanism_version_range
     ]
     inputs.properties replaceProperties
 
