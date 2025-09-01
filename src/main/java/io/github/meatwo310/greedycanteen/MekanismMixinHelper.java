@@ -1,5 +1,6 @@
 package io.github.meatwo310.greedycanteen;
 
+import io.github.meatwo310.greedycanteen.config.ServerConfig;
 import mekanism.common.config.MekanismConfig;
 import net.minecraft.world.entity.player.Player;
 
@@ -9,7 +10,7 @@ public class MekanismMixinHelper {
             return Math.min(foodNeeded, min);
         }
 
-        float saturationNeeded = 20.0f - player.getFoodData().getSaturationLevel();
+        float saturationNeeded = (float) (ServerConfig.TARGET_SATURATION.get() - player.getFoodData().getSaturationLevel());
         float saturationModifier = MekanismConfig.general.nutritionalPasteSaturation.get();
         int saturationFoodNeeded = saturationModifier <= 0 ? 0 : (int) Math.ceil(saturationNeeded / (saturationModifier * 2.0f));
         int needed = Math.min(Math.max(foodNeeded, saturationFoodNeeded), min);
@@ -22,6 +23,6 @@ public class MekanismMixinHelper {
             return player.canEat(canAlwaysEat);
         }
 
-        return player.canEat(canAlwaysEat) || player.getFoodData().getSaturationLevel() < 20.0f;
+        return player.canEat(canAlwaysEat) || player.getFoodData().getSaturationLevel() < ServerConfig.TARGET_SATURATION.get();
     }
 }

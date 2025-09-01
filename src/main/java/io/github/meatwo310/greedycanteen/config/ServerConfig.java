@@ -5,6 +5,10 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class ServerConfig {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
+    public static final ForgeConfigSpec.DoubleValue TARGET_SATURATION = BUILDER
+            .comment("The target saturation level for the canteen and nutritional injection unit modifications.")
+            .defineInRange("targetSaturation", 20.0 - (0.8 * 2), 0.0, 20.0);
+
     public static final ForgeConfigSpec.BooleanValue CANTEEN_ENABLED = BUILDER
             .push("canteen")
             .comment("Whether the canteen modification is enabled or not")
