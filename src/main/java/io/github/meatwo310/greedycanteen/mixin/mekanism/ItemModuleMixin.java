@@ -24,7 +24,7 @@ public class ItemModuleMixin {
             ordinal = 4
     ))
     private void appendHoverTextInject(@NotNull ItemStack stack, Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag, CallbackInfo ci) {
-        if (!ServerConfig.INJECTION_UNIT_ENABLED.get() || !stack.is(MekanismItems.MODULE_NUTRITIONAL_INJECTION.get())) {
+        if (!ServerConfig.INJECTION_UNIT_ENABLE.get() || !stack.is(MekanismItems.MODULE_NUTRITIONAL_INJECTION.get())) {
             return;
         }
 

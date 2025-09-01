@@ -27,7 +27,7 @@ import java.util.List;
 public abstract class ItemCanteenMixin {
     @Inject(method = "appendHoverText", at = @At("TAIL"))
     private void appendHoverTextInject(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag, CallbackInfo ci) {
-        if (!ServerConfig.CANTEEN_ENABLED.get()) {
+        if (!ServerConfig.CANTEEN_ENABLE.get()) {
             return;
         }
 
@@ -44,11 +44,11 @@ public abstract class ItemCanteenMixin {
 
     @Redirect(method = "finishUsingItem", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
     private int min(int foodNeeded, int min, @Local Player player) {
-        return MekanismMixinHelper.calcNeeded(ServerConfig.CANTEEN_ENABLED.get(), foodNeeded, min, player);
+        return MekanismMixinHelper.calcNeeded(ServerConfig.CANTEEN_ENABLE.get(), foodNeeded, min, player);
     }
 
     @Redirect(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;canEat(Z)Z"))
     private boolean canEatRedirect(Player player, boolean canAlwaysEat) {
-        return MekanismMixinHelper.canEat(ServerConfig.CANTEEN_ENABLED.get(), player, canAlwaysEat);
+        return MekanismMixinHelper.canEat(ServerConfig.CANTEEN_ENABLE.get(), player, canAlwaysEat);
     }
 }
