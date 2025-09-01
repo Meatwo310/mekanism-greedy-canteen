@@ -1,13 +1,13 @@
 package io.github.meatwo310.greedycanteen.mixin.mekanism;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import io.github.meatwo310.greedycanteen.config.ServerConfig;
 import mekanism.api.text.EnumColor;
 import mekanism.client.key.MekKeyHandler;
 import mekanism.client.key.MekanismKeyHandler;
 import mekanism.common.MekanismLang;
 import mekanism.common.config.MekanismConfig;
 import mekanism.common.item.gear.ItemCanteen;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -27,6 +27,10 @@ import java.util.List;
 public abstract class ItemCanteenMixin {
     @Inject(method = "appendHoverText", at = @At("TAIL"))
     private void appendHoverTextInject(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag, CallbackInfo ci) {
+        if (!ServerConfig.CANTEEN_ENABLED.get()) {
+            return;
+        }
+
         if (MekKeyHandler.isKeyPressed(MekanismKeyHandler.detailsKey)) {
             tooltip.add(Component.translatable("tooltip.greedycanteen.canteen.description1"));
             tooltip.add(Component.translatable("tooltip.greedycanteen.canteen.description2"));
@@ -40,7 +44,7 @@ public abstract class ItemCanteenMixin {
 
     @Redirect(method = "finishUsingItem", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
     private int min(int foodNeeded, int min, @Local Player player) {
-        if (player.isShiftKeyDown()) {
+        if (!ServerConfig.CANTEEN_ENABLED.get() || player.isShiftKeyDown()) {
             return Math.min(foodNeeded, min);
         }
 
@@ -54,7 +58,7 @@ public abstract class ItemCanteenMixin {
 
     @Redirect(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;canEat(Z)Z"))
     private boolean canEatRedirect(Player player, boolean canAlwaysEat) {
-        if (player.isShiftKeyDown()) {
+        if (!ServerConfig.CANTEEN_ENABLED.get() || player.isShiftKeyDown()) {
             return player.canEat(canAlwaysEat);
         }
 
