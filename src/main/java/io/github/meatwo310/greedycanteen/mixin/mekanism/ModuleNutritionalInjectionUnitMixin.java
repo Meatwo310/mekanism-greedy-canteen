@@ -9,9 +9,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(value = ModuleNutritionalInjectionUnit.class, remap = false)
+@Mixin(value = ModuleNutritionalInjectionUnit.class)
 public class ModuleNutritionalInjectionUnitMixin {
-    @Redirect(method = "tickServer", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I", ordinal = 0))
+    @Redirect(method = "tickServer", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I", ordinal = 0), remap = false)
     private int min(int foodNeeded, int min, @Local(argsOnly = true) Player player) {
         return MekanismMixinHelper.calcNeeded(ServerConfig.INJECTION_UNIT_ENABLED.get(), foodNeeded, min, player);
     }
