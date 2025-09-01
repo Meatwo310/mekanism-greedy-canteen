@@ -6,6 +6,7 @@
   "refmap": "greedycanteen.refmap.json",
   "mixins": [
     "mekanism.ItemCanteenMixin",
+    "mekanism.ItemModuleMixin",
     "mekanism.ModuleNutritionalInjectionUnitMixin"
   ],
   "client": [
