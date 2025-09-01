@@ -12,6 +12,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class ItemCanteenMixin {
     @Redirect(method = "finishUsingItem", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
     private int min(int foodNeeded, int min, @Local Player player) {
+        if (player.isShiftKeyDown()) {
+            return Math.min(foodNeeded, min);
+        }
+
         float saturationNeeded = 20.0f - player.getFoodData().getSaturationLevel();
         float saturationModifier = MekanismConfig.general.nutritionalPasteSaturation.get();
         int saturationFoodNeeded = saturationModifier <= 0 ? 0 : (int) Math.ceil(saturationNeeded / (saturationModifier * 2.0f));
@@ -22,6 +26,10 @@ public abstract class ItemCanteenMixin {
 
     @Redirect(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;canEat(Z)Z"))
     private boolean canEatRedirect(Player player, boolean canAlwaysEat) {
+        if (player.isShiftKeyDown()) {
+            return player.canEat(canAlwaysEat);
+        }
+
         return player.canEat(canAlwaysEat) || player.getFoodData().getSaturationLevel() < 20.0f;
     }
 }
