@@ -10,5 +10,11 @@ public class ServerConfig {
             .comment("Whether the canteen modification is enabled or not")
             .define("enabled", true);
 
+    public static final ForgeConfigSpec.BooleanValue INJECTION_UNIT_ENABLED = BUILDER
+            .pop()
+            .push("injectionUnit")
+            .comment("Whether the nutritional injection unit modification is enabled or not")
+            .define("enabled", true);
+
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 }

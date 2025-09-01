@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "greedycanteen.refmap.json",
   "mixins": [
-    "mekanism.ItemCanteenMixin"
+    "mekanism.ItemCanteenMixin",
+    "mekanism.ModuleNutritionalInjectionUnitMixin"
   ],
   "client": [
   ],
