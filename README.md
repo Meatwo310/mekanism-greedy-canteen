@@ -1,5 +1,6 @@
 # Mekanism: Greedy Canteen
 A Minecraft mod that modifies Mekanism's Canteen to drink Nutritional Paste until saturation is full.
+
 Also supports Nutritional Injection Unit as well!
 
 ![Canteen tooltip](https://github.com/user-attachments/assets/d80f8f29-61f1-4269-b2e8-d10375ce6d33)
