@@ -1,4 +1,4 @@
-package io.github.meatwo310.greedycanteen.mixin.mekanism;
+package io.github.meatwo310.greedycanteen.mixin.mekanism.client;
 
 import io.github.meatwo310.greedycanteen.config.ServerConfig;
 import mekanism.common.item.ItemModule;
