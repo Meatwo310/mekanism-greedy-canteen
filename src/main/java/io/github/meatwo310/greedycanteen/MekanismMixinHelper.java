@@ -25,4 +25,8 @@ public class MekanismMixinHelper {
 
         return player.canEat(canAlwaysEat) || player.getFoodData().getSaturationLevel() < ServerConfig.TARGET_SATURATION.get();
     }
+
+    public static boolean needExtraInjection(Player player) {
+        return ServerConfig.INJECTION_UNIT_ENABLE.get() && (!ServerConfig.INJECTION_UNIT_PAUSE_WHEN_FULL_HEALTH.get() || player.getHealth() < player.getMaxHealth());
+    }
 }
