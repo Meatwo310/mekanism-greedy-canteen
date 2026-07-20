@@ -6,8 +6,11 @@ plugins {
 }
 
 val configuredVersion = project.property("configuredVersion").toString()
+val mekanismVersion = project.property("mekanismVersion").toString()
 
 // Mod Dependencies
 dependencies {
+    modImplementation("mekanism:Mekanism:$mekanismVersion")
+    ciRuntimeMods("mekanism:Mekanism:$mekanismVersion")
     modRuntimeOnly(libs.configured, req(configuredVersion))
 }

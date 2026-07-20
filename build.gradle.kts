@@ -174,10 +174,13 @@ subprojects {
             url = uri("https://maven.parchmentmc.org")
         }
 
-//        maven {
-//            name = "ModMaven"
-//            url = uri("https://modmaven.dev/")
-//        }
+        maven {
+            name = "ModMaven"
+            url = uri("https://modmaven.dev/")
+            content {
+                includeGroup("mekanism")
+            }
+        }
     }
 
     tasks.withType<JavaCompile>().configureEach {
