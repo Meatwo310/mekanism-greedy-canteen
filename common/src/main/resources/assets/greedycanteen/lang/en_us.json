@@ -1,0 +1,5 @@
+{
+  "tooltip.greedycanteen.canteen.description1": "Drinks paste until saturation reaches the configured target.",
+  "tooltip.greedycanteen.canteen.description2": "Reverts to default behavior while sneaking.",
+  "tooltip.greedycanteen.nutritional_injection_unit.description": "Feeds until saturation reaches the configured target."
+}

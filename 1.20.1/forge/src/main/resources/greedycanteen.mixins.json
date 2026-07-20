@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.meatwo310.greedycanteen.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "mekanism.ItemCanteenMixin",
+    "mekanism.ModuleNutritionalInjectionUnitMixin"
+  ],
+  "client": [
+    "mekanism.client.ItemCanteenMixin",
+    "mekanism.client.ItemModuleMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
